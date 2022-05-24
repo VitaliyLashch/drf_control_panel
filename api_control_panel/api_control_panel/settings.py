@@ -40,7 +40,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',
     'rest_framework_simplejwt',
-    'users'
+    'users',
+    'logger',
+    'telegram_bot',
+    'Parser',
+    'mobileapp',
+    'collector'
+
 ]
 
 MIDDLEWARE = [

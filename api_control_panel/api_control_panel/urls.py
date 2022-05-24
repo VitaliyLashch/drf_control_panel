@@ -28,7 +28,12 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
-    path('api/', include('users.urls')),
+    path('user/', include('users.urls')),
+    path('logger/', include('logger.urls')),
+    path('telegram_bot/', include('telegram_bot.urls')),
+    path('parser/', include('Parser.urls')),
+    path('mobileapp/', include('mobileapp.urls')),
+    path('collector/', include('collector.urls')),
     path('swagger-ui/', TemplateView.as_view(
         template_name='swagger-ui.html',
         extra_context={'schema_url': 'schema.yml'}
