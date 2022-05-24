@@ -1,0 +1,7 @@
+django
+djoser
+djangorestframework
+requests
+mysql
+mysql-connector-python
+djangorestframework-simplejwt
