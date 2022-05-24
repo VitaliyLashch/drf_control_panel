@@ -5,3 +5,5 @@ requests
 mysql
 mysql-connector-python
 djangorestframework-simplejwt
+django-rest-swagger
+pyyaml
