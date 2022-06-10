@@ -21,14 +21,18 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 from django.views.generic import TemplateView
-from users.views import schema_view
+from rest_framework_swagger.views import get_swagger_view
+
+
+schema_view = get_swagger_view(title='Pastebin API')
 urlpatterns = [
+    path('users/', include('users.urls'), name='token_verify'),
     re_path(r'^$', schema_view),
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
-    path('user/', include('users.urls')),
+
     path('logger/', include('logger.urls')),
     path('telegram_bot/', include('telegram_bot.urls')),
     path('parser/', include('Parser.urls')),
@@ -39,3 +43,4 @@ urlpatterns = [
         extra_context={'schema_url': 'schema.yml'}
     ), name='swagger-ui')
 ]
+schema_view = get_swagger_view(title='Pastebin API')

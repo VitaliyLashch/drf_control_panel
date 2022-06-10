@@ -45,11 +45,14 @@ INSTALLED_APPS = [
     'telegram_bot',
     'Parser',
     'mobileapp',
-    'collector'
+    'collector',
+'corsheaders',
 
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,6 +82,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'api_control_panel.wsgi.application'
 
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:59051',
+'http://localhost:4200',
+)
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -148,8 +155,6 @@ REST_FRAMEWORK = {
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
     ]
 }
 
