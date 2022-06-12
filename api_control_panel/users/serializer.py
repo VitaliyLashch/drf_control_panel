@@ -1,6 +1,7 @@
 from rest_framework import serializers
+from .models import User
 
-class UserSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    username = serializers.CharField()
-    permissions = serializers.JSONField()
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'permissions']

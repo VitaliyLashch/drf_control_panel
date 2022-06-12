@@ -29,6 +29,7 @@ class MyUserManager(BaseUserManager):
     def create_user(self, email, username, password):
         return self._create_user(email, username, password)
 
+
     def create_superuser(self, email, username, password):
         return self._create_user(email, username, password, is_staff=True, is_superuser=True)
 
@@ -42,7 +43,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)  # Статус админа
     USERNAME_FIELD = 'email'  # Идентификатор для обращения
     REQUIRED_FIELDS = ['username']  # Список имён полей для Superuser
-    objects = MyUserManager()  # Добавляем методы класса MyUserManager
+
     # Метод для отображения в админ панели
     def __str__(self):
         return self.email

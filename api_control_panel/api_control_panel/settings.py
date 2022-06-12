@@ -83,10 +83,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'api_control_panel.wsgi.application'
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:59051',
+    'http://localhost:59463',
 'http://localhost:4200',
 )
-
+APPEND_SLASH=False
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -160,7 +160,7 @@ REST_FRAMEWORK = {
 
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
