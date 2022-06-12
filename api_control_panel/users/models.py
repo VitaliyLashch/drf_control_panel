@@ -43,7 +43,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)  # Статус админа
     USERNAME_FIELD = 'email'  # Идентификатор для обращения
     REQUIRED_FIELDS = ['username']  # Список имён полей для Superuser
-
+    objects = MyUserManager()
     # Метод для отображения в админ панели
     def __str__(self):
         return self.email

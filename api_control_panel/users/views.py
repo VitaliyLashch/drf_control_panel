@@ -84,22 +84,7 @@ def settings_user(request):
             user.delete()
             return JsonResponse({}, safe=False)
 
-def loger_api_filters(request):
-    resp = requests.post(url='http://127.0.0.1:5559/get_api_loggin_data', json=json.loads(request.body), headers = {
-                "x-api-key": '1111',
-                "Content-Type": "application/json"
-            })
 
-    return Response(resp.json())
-
-
-def loger_traceback_filters(request):
-    resp = requests.post(url='http://127.0.0.1:5559/get_trace_loggin_data', json=json.loads(request.body), headers = {
-                "x-api-key": '1111',
-                "Content-Type": "application/json"
-            })
-
-    return Response(resp.json())
 
 
 class Logout(APIView):
