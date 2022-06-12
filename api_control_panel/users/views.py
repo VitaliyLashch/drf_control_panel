@@ -4,7 +4,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
-from .models import User
+from .models import User, MyUserManager
+
 from rest_framework_simplejwt.state import token_backend
 from .serializer import UserSerializer
 import requests
@@ -58,37 +59,30 @@ def getUserAll(request):
 
 @csrf_exempt
 def settings_user(request):
-
-    try:
         if request.method == 'POST':
-            us = json.loads(request.data)
+            us = json.loads(request.body)
             if(us):
                 user = User(
                         username=us['username'],
                         email=us['email'],
-                        permissions=us['permissions'],
-                        password=us['password']
+                        permissions=us['permissions']
                 )
+                user.set_password(us['password'])
                 user.save()
-            return Response(200)
+            return JsonResponse({}, safe=False)
         elif request.method == 'PATCH':
-            us = json.loads(request.data)
-            print(us)
+            us = json.loads(request.body)
             user = User.objects.get(id=us["id"])
-            print(user)
-            user.name = us["name"]
+            user.username = us["username"]
             user.email = us["email"]
             user.permissions = us["permissions"]
             user.save()
-            return Response(request, status=200)
+            return JsonResponse({}, safe=False)
         elif request.method == 'DELETE':
-            data = json.loads(request.data)
+            data = json.loads(request.body)
             user = User.objects.get(id=data['id'])
             user.delete()
-            return Response(200)
-    except:
-        print(990)
-        return Response(500)
+            return JsonResponse({}, safe=False)
 
 def loger_api_filters(request):
     resp = requests.post(url='http://127.0.0.1:5559/get_api_loggin_data', json=json.loads(request.body), headers = {
