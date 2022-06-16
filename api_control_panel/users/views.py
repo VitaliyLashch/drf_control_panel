@@ -80,10 +80,15 @@ def settings_user(request):
             return JsonResponse({}, safe=False)
         elif request.method == 'DELETE':
             data = json.loads(request.body)
+            print(data['id'])
             user = User.objects.get(id=data['id'])
             user.delete()
             return JsonResponse({}, safe=False)
-
+@csrf_exempt
+def settings_user_delete(request, id_):
+    user = User.objects.get(id=id_)
+    user.delete()
+    return JsonResponse({}, safe=False)
 
 
 

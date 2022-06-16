@@ -26,8 +26,8 @@ from rest_framework_swagger.views import get_swagger_view
 
 schema_view = get_swagger_view(title='Pastebin API')
 urlpatterns = [
-    path('users/', include('users.urls'), name='token_verify'),
     re_path(r'^$', schema_view),
+    path('users/', include('users.urls'), name='token_verify'),
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
