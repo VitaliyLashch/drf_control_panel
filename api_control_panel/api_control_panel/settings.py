@@ -188,3 +188,21 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+CONFIG_MOBILE = {
+    "host": "127.0.0.1",
+    "port": 5000,
+    "ssl": False,
+    "api_key": "B4!8@H1oWl0PLXRf99Yb9Siy"
+}
+CONFIG_PARSER = {
+    "host": "127.0.0.1",
+    "port": 5885,
+    "ssl": False,
+    "api_key": "1111"
+}
+CONFIG_LOGER = {
+    "host": "127.0.0.1",
+    "port": 5559,
+    "ssl": False,
+    "api_key": "1111"
+}
